@@ -2,8 +2,8 @@
 
 Your Claude Code agents at a glance in the Omarchy bar. Den Agents shows how many
 agents are running and, when one is waiting on you, how many need you. Click it
-to open [Den](https://github.com/GlacierHubAB/den), where you can see, approve
-and steer them.
+to open [Den](https://github.com/GlacierHubAB/den), which lets you see, approve
+and steer all your Claude Code agents from one terminal screen.
 
 ![Den Agents](preview.png)
 
@@ -75,9 +75,10 @@ leaves Den alone; to remove Den too, follow
 ## How it works
 
 Every few seconds the widget runs `den list -json` directly (no shell) and
-counts the agents by status. It reads Den's `StatusName` field
-(`needs_you`, `working`, `idle`, `unknown`, `gone`) and falls back to the
-integer `Status` that older Den versions print. Gone agents aren't counted.
+counts the agents by status. It works with Den v0.2.0, which prints each
+status as an integer (`Status`), and uses the string `StatusName`
+(`needs_you`, `working`, `idle`, `unknown`, `gone`) instead whenever Den
+prints one. Gone agents aren't counted.
 If Den is missing, fails or takes longer than 15 seconds, the widget dims and
 says why in its tooltip; it never blocks the bar. Without Den it checks only
 once a minute.
